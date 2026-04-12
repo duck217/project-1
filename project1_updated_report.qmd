@@ -1,0 +1,70 @@
+---
+title: "Geopolitical"
+author: "Lin"
+format: html
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+```
+
+## How does leader tenure differ across regimes?
+
+Data summary with 2 new columns and a custom function
+
+```{r}
+
+tenure_data <- democracy_data |>
+  mutate(
+    president_tenure = year - president_accesion_year,
+    monarch_tenure = year - monarch_accession_year
+  )
+
+# function to get the mean tenure of either presidents or monarchs, and group them by their regime       category
+tenure_by_regime <- function(data, leader_type) {
+  if (leader_type == "president") {
+    data |>
+      filter(!is.na(president_name), !is.na(president_tenure)) |> 
+      group_by(president_name, regime_category) |> 
+      summarize(tenure = max(president_tenure, na.rm = TRUE), .groups = "drop") |>
+      group_by(regime_category) |>
+      summarize(mean_tenure = mean(tenure, na.rm = TRUE))
+  } else {
+    data |>
+      filter(!is.na(monarch_name), !is.na(monarch_tenure)) |>
+      group_by(monarch_name, regime_category) |>
+      summarize(tenure = max(monarch_tenure, na.rm = TRUE), .groups = "drop") |> 
+      group_by(regime_category) |>
+      summarize(mean_tenure = mean(tenure, na.rm = TRUE))
+  }
+}
+
+```
+
+```{r}
+tenure_by_regime(tenure_data, "president")
+tenure_by_regime(tenure_data, "monarch")
+```
+## How young does monarchs rise to power compared to presidents?
+
+Data summary with 2 new columns and iteration with a helper function
+
+```{r}
+
+age_data <- democracy_data |>
+  mutate(
+    monarch_age = monarch_accession_year - monarch_birthyear,
+    president_age = president_accesion_year - president_birthyear
+  )
+
+# helper function to get the mean of the column in the 'age' data frame 
+get_mean <- function(x){
+  mean(age_data[[x]], na.rm = TRUE)
+}
+
+cols <- c("monarch_age", "president_age")
+map(cols, get_mean)
+```
+
