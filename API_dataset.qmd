@@ -1,0 +1,88 @@
+---
+title: "project1-api-dataset"
+author: "Lin"
+format: html
+---
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(httr)
+library(countrycode)
+library(glue)
+```
+
+### Setup
+
+We load our democracy data and filter to 2000 onward to avoid issues with historical countries like the Soviet Union that no longer exist and won't have GDP data.
+
+```{r}
+#| message: false
+democracy_data <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-11-05/democracy_data.csv')
+
+democracy_recent <- democracy_data |>
+  filter(year >= 2000)
+```
+
+### Intro
+
+We use the API-Ninjas GDP endpoint to get historical GDP data for each country. The API returns year-by-year GDP statistics including GDP per capita and GDP growth rate. We iterate over all unique countries using map().
+
+### API Key
+
+```{r}
+#| eval: false
+
+my_key <- ""
+```
+
+### API Function
+
+takes a 3-letter country code and returns a GDP data frame for that country.
+
+```{r}
+#| eval: false
+get_gdp <- function(country, key = my_key) {
+  
+  Sys.sleep(1)
+  
+  url <- glue("https://api.api-ninjas.com/v1/gdp?country={country}&X-Api-Key={key}")
+  my_data <- safely(fromJSON)(url)
+  
+  if (is.null(my_data$result)) {
+    return(NULL)
+  } else {
+    return(my_data$result)
+  }
+}
+
+```
+
+### Iterating all the countries from API data set
+
+```{r}
+#| eval: false
+
+codes <- democracy_recent |>
+  distinct(country_code) |>
+  pull(country_code)
+
+gdp_list <- map(codes, get_gdp)
+
+gdp_df <- gdp_list |>
+  compact() |>
+  bind_rows()
+
+write_csv(gdp_df, "/Users/roland/Stat 431/lab-1/gdp_data.csv")
+```
+
+### Combining to the original data set
+
+```{r}
+
+combined <- democracy_recent |>
+  left_join(gdp_df, by = c("country_code" = "country", "year"))
+
+```
+
