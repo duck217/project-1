@@ -1,0 +1,42 @@
+---
+title: "checkpoint4_visualization"
+author: "Lin"
+format: html
+---
+
+```{r}
+combined <- read.csv("democracy_gdp.csv")
+table(combined$electoral_category)
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(scales)
+
+mean_gdp <- combined |> 
+  filter(regime_category != "NA") |>
+  group_by(regime_category) |>
+  mutate(
+    regime_group = if_else(n() < 100, "Territories & Colonies", first(regime_category)) #since all the   counts of territories are less than 100
+  ) |>
+  ungroup() |> 
+  group_by(year, regime_group) |>
+  summarize(mean_gdp = mean(gdp_per_capita_nominal, na.rm = TRUE),
+            .groups = "drop")
+
+ggplot(data = mean_gdp,
+       mapping = aes(x = year,
+                     y = mean_gdp)) +
+  geom_area(mapping = aes(fill = regime_group),
+            position = "stack",
+            alpha = 0.5) +
+  scale_y_continuous(labels = comma) + #otherwise it was showing in e+05 with limits
+  scale_fill_brewer(palette = "Set1") +
+  labs(x = "", y = "Mean GDP per Capita (USD)",
+       title = "GDP per Capita by Regime Type",
+       fill = "Types of Regime") +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank())
+```
+
