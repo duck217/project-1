@@ -152,20 +152,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(country_code) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(country_code)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>gdp_list <span class="ot">&lt;-</span> <span class="fu">map</span>(codes, get_gdp)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gdp_df <span class="ot">&lt;-</span> gdp_list <span class="sc">|&gt;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compact</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#write_csv(gdp_df, "C:/Users/keoni/OneDrive/Documents/STAT-431/Government-List/gdp_data.csv")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>gdp_list <span class="ot">&lt;-</span> <span class="fu">map</span>(codes, get_gdp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=UGA&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=UKR&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=ARE&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=GBR&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=USA&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=URY&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=VIR&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=UZB&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=VUT&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=VEN&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=VNM&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=YEM&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=ZMB&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in open.connection(con, "rb"): cannot open URL
+'https://api.api-ninjas.com/v1/gdp?country=ZWE&amp;X-Api-Key=pv2dwTZ4RCa3KghkCHIK1P2Axb4hdYr051DxyAMp':
+HTTP status was '400 Bad Request'</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gdp_df <span class="ot">&lt;-</span> gdp_list <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compact</span>() <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#write_csv(gdp_df, "C:/Users/keoni/OneDrive/Documents/STAT-431/Government-List/gdp_data.csv")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="combining-to-the-original-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="combining-to-the-original-data-set">Combining to the original data set</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>combined <span class="ot">&lt;-</span> democracy_recent <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gdp_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country_code"</span> <span class="ot">=</span> <span class="st">"country"</span>, <span class="st">"year"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>combined <span class="ot">&lt;-</span> democracy_recent <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gdp_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country_code"</span> <span class="ot">=</span> <span class="st">"country"</span>, <span class="st">"year"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -178,34 +247,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="loading-in-and-cleaning-the-countries-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="loading-in-and-cleaning-the-countries-dataset">Loading in and Cleaning the Countries Dataset</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in package that allows us to convert country names to codes</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load in countries dataset</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>life_expectancy <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/Users/roland/Stat 431/lab-1/country_life_expectancy.csv"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new variable containing each country's iso3c code</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>life_expectancy<span class="sc">$</span>country_code <span class="ot">&lt;-</span>  <span class="fu">countrycode</span>(life_expectancy<span class="sc">$</span>Country, </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">origin =</span> <span class="st">"country.name"</span>, </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">destination =</span> <span class="st">"iso3c"</span>, </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">custom_match =</span> <span class="fu">c</span>(<span class="st">"Netherlands Antilles"</span> <span class="ot">=</span> <span class="st">"ANT"</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Virgin Islands"</span> <span class="ot">=</span> <span class="st">"VIR"</span>))</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(life_expectancy, "C:/Users/keoni/OneDrive/Documents/STAT-431/Government-List/country_life_expectancy.csv", row.names = FALSE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in package that allows us to convert country names to codes</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load in countries dataset</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>life_expectancy <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/Users/roland/Stat 431/lab-1/country_life_expectancy.csv"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new variable containing each country's iso3c code</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>life_expectancy<span class="sc">$</span>country_code <span class="ot">&lt;-</span>  <span class="fu">countrycode</span>(life_expectancy<span class="sc">$</span>Country, </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">origin =</span> <span class="st">"country.name"</span>, </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">destination =</span> <span class="st">"iso3c"</span>, </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">custom_match =</span> <span class="fu">c</span>(<span class="st">"Netherlands Antilles"</span> <span class="ot">=</span> <span class="st">"ANT"</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Virgin Islands"</span> <span class="ot">=</span> <span class="st">"VIR"</span>))</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(life_expectancy, "C:/Users/keoni/OneDrive/Documents/STAT-431/Government-List/country_life_expectancy.csv", row.names = FALSE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="combining-to-the-original-data-set-1" class="level3">
 <h3 class="anchored" data-anchor-id="combining-to-the-original-data-set-1">Combining to the original data set</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> combined <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(life_expectancy, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country_code"</span> <span class="ot">=</span> <span class="st">"country_code"</span>, <span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> combined <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(life_expectancy, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country_code"</span> <span class="ot">=</span> <span class="st">"country_code"</span>, <span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="final-meta-data-set" class="level2">
 <h2 class="anchored" data-anchor-id="final-meta-data-set">Final Meta Data Set</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(meta_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(meta_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "country_name"                "country_code"               
  [3] "year"                        "regime_category_index"      
@@ -248,32 +317,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="gdp-by-different-regimes" class="level3">
 <h3 class="anchored" data-anchor-id="gdp-by-different-regimes">GDP by Different Regimes</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  meta_data <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.data[[variable]] <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_gdp =</span> <span class="fu">mean</span>(gdp_per_capita_nominal, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"is_monarchy"</span>, <span class="st">"is_commonwealth"</span>, <span class="st">"is_presidential"</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>          <span class="st">"is_colony"</span>, <span class="st">"is_communist"</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(vars, <span class="cf">function</span>(var) {</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop</span>(var) <span class="sc">|&gt;</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">variable =</span> var)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  meta_data <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.data[[variable]] <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_gdp =</span> <span class="fu">mean</span>(gdp_per_capita_nominal, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"is_monarchy"</span>, <span class="st">"is_commonwealth"</span>, <span class="st">"is_presidential"</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>          <span class="st">"is_colony"</span>, <span class="st">"is_communist"</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(vars, <span class="cf">function</span>(var) {</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop</span>(var) <span class="sc">|&gt;</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">variable =</span> var)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   avg_gdp     n variable       
     &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;          
-1  24873.  1037 is_monarchy    
-2  10207.  1082 is_commonwealth
-3   7152.  2459 is_presidential
+1  24043.  1037 is_monarchy    
+2  10138.  1082 is_commonwealth
+3   7031.  2459 is_presidential
 4  25565.   273 is_colony      
-5   3899.   147 is_communist   </code></pre>
+5   3794.   147 is_communist   </code></pre>
 </div>
 </div>
 <p>Our findings show that colonies have the highest average GDP among the categories listed, followed closely by monarchies, while commonwealth and presidential systems fall in the middle range. In contrast, communist countries have the lowest average GDP by a large margin. The differences in sample sizes (n) across groups suggest that some categories, such as presidential regimes, are much more widely represented while others are based on less observations which may influence the averages.</p>
@@ -284,18 +353,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="life-expectancy-by-gdp" class="level3">
 <h3 class="anchored" data-anchor-id="life-expectancy-by-gdp">Life Expectancy by GDP</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  meta_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(gdp_per_capita_nominal, Life.expectancy),</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdp_per_capita_nominal, <span class="at">y =</span> Life.expectancy)) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship Between GDP per Capita and Life Expectancy"</span>,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Countries over time"</span>,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"GDP per Capita (USD)"</span>,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Life Expectancy (years)"</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  meta_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(gdp_per_capita_nominal, Life.expectancy),</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdp_per_capita_nominal, <span class="at">y =</span> Life.expectancy)) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship Between GDP per Capita and Life Expectancy"</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Countries over time"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"GDP per Capita (USD)"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Life Expectancy (years)"</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>

@@ -10,6 +10,8 @@ table(combined$electoral_category)
 ```
 
 ```{r}
+#| fig-alt: "Stacked area plot showing mean GDP per capita from 2000 to 2020 for seven regime types including democracies, dictatorships, and territories."
+
 library(ggplot2)
 library(tidyverse)
 library(scales)
