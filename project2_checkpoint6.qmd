@@ -195,7 +195,38 @@ As a **presidential democracy** country, the United States consistently ranks am
 
 ### Summary Table
 
+```{r}
+#| label: tbl-income-state
 
+us_data |>
+  mutate(
+    GeoName = str_remove(GeoName, " \\*$"),
+    income_2025 = as.numeric(income_2025)
+  ) |>
+  filter(
+    GeoName != "United States",
+    !GeoName %in% c("New England", "Mideast", "Great Lakes", "Plains",
+                    "Southeast", "Southwest", "Rocky Mountain", "Far West")
+  ) |>
+  select(GeoName, income_2025) |>
+  arrange(desc(income_2025)) |>
+  gt() |>
+  tab_header(title = "Income per Capita by State") |>
+  cols_label(
+    GeoName = "State",
+    income_2025 = "Income per Capita"
+  ) |>
+  fmt_currency(columns = income_2025, currency = "USD", decimals = 0) |>
+  data_color(
+    columns = income_2025,
+    palette = c("#f7fbff", "#6baed6", "#08306b")
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_caption("Per capita personal income by U.S. state, sorted from highest to lowest.")
+```
 
 ## Income per Capita by State
 
@@ -233,6 +264,3 @@ leaflet(map_data, height = 500) |>
             opacity = 1) |>
    setView(-96, 42, 4) 
 ```
-
-
-
