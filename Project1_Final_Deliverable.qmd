@@ -149,6 +149,7 @@ When looking at the tenures between presidents and monarchs, we can see that mon
 
 ```{r}
 #| label: fig-tenure-ridge
+#| fig-cap: "Distribution of presidential tenure across regime types."
 #| message: false
 #| fig-alt: "density ridge plot showing the distribution spread of tenure length in years by different presidential regimes."
 
@@ -175,10 +176,12 @@ In this plot we can see how the distribution of tenure differs among various reg
 
 ### Tenure length by different monarchical regimes
 
+The monarchy side tells a similar story. Looking at individual monarch tenures rather than averages gives us a sense of just how extreme some of these reigns get.
+
 ```{r}
 #| label: fig-tenure-jitter
+#| fig-cap: "Individual monarch tenure observations by regime type."
 #| fig-alt: "jittered scatterplot that plots each monarchy regime by type of regime and how long the regime's tenure was in years."
-#| 
 
 tenure_data |>
   filter(!is.na(monarch_tenure), !is.na(regime_category), is_monarchy == TRUE) |>
@@ -242,10 +245,11 @@ combined |>
 
 @tbl-gdp-regime shows that Territories & Colonies have the highest mean GDP 
 per capita, followed by Royal dictatorships and Parliamentary democracies. 
-Military and Civilian dictatorships sit at the bottom.
+Military and Civilian dictatorships sit at the bottom. This could reflect the economic instability that often comes with authoritarian rule like frequent regime changes, lack of foreign investment, and weaker institutions tend to hold back economic growth.
 
 ```{r}
 #| label: fig-gdp-area
+#| fig-cap: "Mean GDP per capita trends by regime type, 2000–2020."
 #| fig-alt: "Stacked area plot showing mean GDP per capita from 2000 to 2020 for seven regime types including democracies, dictatorships, and territories."
 
 mean_gdp <- combined |>
@@ -302,6 +306,7 @@ dem_gdp |>
 
 ```{r}
 #| label: fig-gdp-line
+#| fig-cap: "Mean GDP per capita comparison between democracies and non-democracies."
 #| fig-alt: "Line plot comparing mean GDP per capita between democracies and non-democracies from 2000 to 2020."
 
 
@@ -317,7 +322,7 @@ ggplot(dem_gdp, aes(x = year, y = mean_gdp, color = democracy)) +
   theme(panel.grid.minor = element_blank())
 ```
 
-@tbl-gdp-democracy and @fig-gdp-line show that democracies consistently have a higher mean GDP per capita, and the gap between the two groups widens over time.
+@tbl-gdp-democracy and @fig-gdp-line show that democracies consistently have a higher mean GDP per capita, and the gap between the two groups has widened over time, from roughly a few thousand dollars in 2000 to a noticeably larger spread by 2020. This suggests that democratic institutions may provide a more stable foundation for sustained economic growth.
 
 Overall, economic output varies substantially across regime types, with democracies and territories outperforming dictatorships in mean GDP per capita.
 
