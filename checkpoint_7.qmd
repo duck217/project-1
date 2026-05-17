@@ -77,7 +77,7 @@ selectInput(
   inputId  = "regime_select",
   label    = "Select Regime Type:",
   choices  = c("All", sort(unique(mean_gdp$regime_group))),
-  selected = NULL
+  selected = "All"
 )
 ```
 
@@ -95,20 +95,20 @@ plotOutput('gdp_plot')
 #| context: server
 
 output$gdp_plot <- renderPlot({
-  plot_data <- if(input$regime_select == "All"){
+
+  plot_data <- if (input$regime_select == "All") {
     mean_gdp
   } else {
     mean_gdp |> filter(regime_group == input$regime_select)
   }
   
-  ggplot(data = plot_data,
+  p <- ggplot(data = plot_data,
          mapping = aes(x = year, y = mean_gdp)) +
     geom_area(
       mapping = aes(fill = regime_group),
-      alpha = 0.7,
-      position = "stack") +
+      alpha = 0.7) +
     scale_y_continuous(labels = comma,
-                      limits = c(0, max(mean_gdp$mean_gdp, na.rm = TRUE))) +
+                       limits = c(0, max(mean_gdp$mean_gdp, na.rm = TRUE))) +
     scale_fill_manual(values = c(
       "Civilian dictatorship" = "#2166ac",
       "Military dictatorship" = "#d6604d",
@@ -117,7 +117,7 @@ output$gdp_plot <- renderPlot({
       "Presidential democracy"  = "#1a9850",
       "Territories & Colonies" = "#f4a582",
       "Royal dictatorship"  = "#9970ab")
-      )+ 
+    ) +
     labs(x = "", y = "Mean GDP per Capita (USD)",
          title = "Mean GDP per Capita by Regime Type",
          subtitle = "Averaged across countries, 2000–2020",
@@ -125,6 +125,11 @@ output$gdp_plot <- renderPlot({
     theme_minimal() +
     theme(legend.position = "none",
           panel.grid.minor = element_blank())
+  
+  if (input$regime_select == "All") {
+    p <- p + facet_wrap(~regime_group, scales = "fixed")
+  }
+  p
 })
   
 ```
@@ -239,38 +244,47 @@ As a **presidential democracy** country, the United States consistently ranks am
 ```{r}
 #| label: tbl-income-state
 
-us_data |>
-  mutate(
-    GeoName = str_remove(GeoName, " \\*$"),
-    income_2025 = as.numeric(income_2025)
-  ) |>
-  filter(
-    GeoName != "United States",
-    !GeoName %in% c("New England", "Mideast", "Great Lakes", "Plains",
-                    "Southeast", "Southwest", "Rocky Mountain", "Far West")
-  ) |>
-  select(GeoName, income_2025) |>
-  arrange(desc(income_2025)) |>
-  gt() |>
-  tab_header(title = "Income per Capita by State") |>
-  cols_label(
-    GeoName = "State",
-    income_2025 = "Income per Capita"
-  ) |>
-  fmt_currency(columns = income_2025, currency = "USD", decimals = 0) |>
-  data_color(
-    columns = income_2025,
-    palette = c("#f7fbff", "#6baed6", "#08306b")
-  ) |>
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = cells_column_labels()
-  ) |>
-  tab_caption("Per capita personal income by U.S. state, sorted from highest to lowest.")
+gt_output("income_table")
+```
+
+```{r}
+#| context: server
+
+output$income_table <- render_gt({
+  filtered <- us_data |>
+    mutate(
+      GeoName = str_remove(GeoName, " \\*$"),
+      income_2025 = as.numeric(income_2025)
+    ) |>
+    filter(
+      GeoName != "United States",
+      !GeoName %in% c("New England", "Mideast", "Great Lakes", "Plains",
+                       "Southeast", "Southwest", "Rocky Mountain", "Far West")
+    )
+
+  if (input$region_select != "All") {
+    filtered <- filtered |>
+      filter(Region == as.numeric(input$region_select))
+  }
+
+  filtered |>
+    select(GeoName, income_2025) |>
+    arrange(desc(income_2025)) |>
+    gt() |>
+    tab_header(title = "Income per Capita by State") |>
+    cols_label(GeoName = "State", income_2025 = "Income per Capita") |>
+    fmt_currency(columns = income_2025, currency = "USD", decimals = 0) |>
+    data_color(columns = income_2025,
+               palette = c("#f7fbff", "#6baed6", "#08306b")) |>
+    tab_style(style = cell_text(weight = "bold"),
+              locations = cells_column_labels()) |>
+    tab_caption("Per capita personal income by U.S. state, sorted from highest to lowest.")
+})
 ```
 
 ## Income per Capita by State
 
+::: {.card}
 ```{r}
 #| label: fig-income-state
 #| output: asis
@@ -308,3 +322,21 @@ leaflet(map_data, height = 500) |>
 
 
 
+```{r}
+selectInput(
+  inputId  = "region_select",
+  label    = "Filter by Region:",
+  choices  = c("All" = "All",
+               "New England"    = "1",
+               "Mideast"        = "2",
+               "Great Lakes"    = "3",
+               "Plains"         = "4",
+               "Southeast"      = "5",
+               "Southwest"      = "6",
+               "Rocky Mountain" = "7",
+               "Far West"       = "8"),
+  selected = "All"
+)
+```
+
+:::
